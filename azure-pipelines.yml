@@ -1,0 +1,47 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    chmod 0777 ./node_modules/.bin/mocha
+    npm test
+  workingDirectory: '$(Build.SourcesDirectory)/DeploymentuebungBahrBahr/myapp'
+  displayName: 'npm install and build'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'test-results.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)/DeploymentuebungBahrBahr/myapp'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/DeploymentuebungBahrBahr/myapp'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure for Students(37642ac4-20f6-40ad-9628-6dcf1d80c04e)'
+    appType: 'webAppLinux'
+    appName: 'mywebappbahrbahr'
+    deployToSlotOrASE: true
+    resourceGroupName: 'teamwork_bahr_bahr'
+    slotName: 'production'
+    package: '$(System.DefaultWorkingDirectory)/DeploymentuebungBahrBahr/myapp'
+    deploymentMethod: 'auto'
+    customWebConfig: '-Handler iisnode -NodeStartFile index.js -appType node'
