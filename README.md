@@ -14,8 +14,11 @@ So bald ein neuer CheckIn in GIT erfollgt soll die pipeline getriggerd werden un
 ## Einstellung der Registry und des Clusters
 
 1. in seinem Azure Account einloggen mit `az login`
-2. Erstellung des AKS Clusters mit folgenden Befehl: `az aks create -g teamwork_bahr_bahr -n aksbahrbahr --node-count 1 --generate-ssh-keys` (Das `--generate-ssh-keys` haben wir benötigen aufgrund einer Fehlermeldung)
-3. Anschließend erstellen wir die registry mit folgenden Befehl: `az acr create -g teamwork_bahr_bahr -n DeploymentRegistryBahrBahr --sku basic`
+2. Erstellung des AKS Clusters mit folgenden Befehl: 
+`az aks create -g teamwork_bahr_bahr -n aksbahrbahr --node-count 1 --generate-ssh-keys` 
+(Das `--generate-ssh-keys` haben wir benötigen aufgrund einer Fehlermeldung)
+3. Anschließend erstellen wir die registry mit folgenden Befehl: 
+`az acr create -g teamwork_bahr_bahr -n DeploymentRegistryBahrBahr --sku basic`
 
 ## Erstellung der Web App inklusive Dockerfile 
 
@@ -47,12 +50,12 @@ Link zum Docker Image in der registry:
 
 ### erfolgreiches Deployment der Pipeline
 
- ![erfolgreiches Deployment der Pipeline](pipeline.JPG)
+ ![erfolgreiches Deployment der Pipeline](assets/pipeline.JPG)
 
 ### registry 
 
- ![registry](registry.JPG)
+ ![registry](assets/registry.JPG)
 
  ### Azure Cluster
 
-  ![azure cluster](aks.JPG)
+  ![azure cluster](assets/aks.JPG)
