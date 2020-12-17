@@ -39,9 +39,8 @@ steps:
     azureSubscription: 'Azure for Students(37642ac4-20f6-40ad-9628-6dcf1d80c04e)'
     appType: 'webAppLinux'
     appName: 'mywebappbahrbahr'
-    deployToSlotOrASE: true
     resourceGroupName: 'teamwork_bahr_bahr'
-    slotName: 'production'
     package: '$(System.DefaultWorkingDirectory)/DeploymentuebungBahrBahr/myapp'
+    runtimeStack: 'NODE|12-lts'
     deploymentMethod: 'auto'
     customWebConfig: '-Handler iisnode -NodeStartFile index.js -appType node'
