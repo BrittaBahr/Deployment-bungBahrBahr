@@ -19,20 +19,21 @@ steps:
     npm install
     chmod 0777 ./node_modules/.bin/mocha
     npm test
-  workingDirectory: '$(Build.SourcesDirectory)/DeploymentuebungBahrBahr/myapp'
+  workingDirectory: '$(Build.SourcesDirectory)/myapp'
   displayName: 'npm install and build'
 
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: 'test-results.xml'
-    searchFolder: '$(System.DefaultWorkingDirectory)/DeploymentuebungBahrBahr/myapp'
+    searchFolder: '$(System.DefaultWorkingDirectory)/myapp'
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/DeploymentuebungBahrBahr/myapp'
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/myapp'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
 
 - task: AzureWebApp@1
   inputs:
@@ -40,7 +41,7 @@ steps:
     appType: 'webAppLinux'
     appName: 'mywebappbahrbahr'
     resourceGroupName: 'teamwork_bahr_bahr'
-    package: '$(System.DefaultWorkingDirectory)/DeploymentuebungBahrBahr/myapp'
+    package: '$(System.DefaultWorkingDirectory)/myapp'
     runtimeStack: 'NODE|12-lts'
     deploymentMethod: 'auto'
     customWebConfig: '-Handler iisnode -NodeStartFile index.js -appType node'
