@@ -56,7 +56,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'StrasserNiklasSoftwareDeploymentFinal-4363.default'
+    environment: 'BrittaBahrDeploymentuebungBahrBahr-4363.default'
     strategy:
       runOnce:
         deploy:
@@ -85,7 +85,7 @@ stages:
     pool:
       vmImage: $(vmImageName)
       
-    environment: 'StrasserNiklasSoftwareDeploymentFinal-4363.$(k8sNamespaceForPR)'
+    environment: 'BrittaBahrDeploymentuebungBahrBahr-4363.$(k8sNamespaceForPR)'
     strategy:
       runOnce:
         deploy:
