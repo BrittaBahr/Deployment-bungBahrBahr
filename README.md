@@ -7,9 +7,9 @@ In deiser Übung soll eine containerized DevOps pipeline erstellt werden welche 
 
 So bald ein neuer CheckIn in GIT erfollgt soll die pipeline getriggerd werden und folgende Aktionen ausführen. 
 
--) eine Docker Image bauen
--) das Image in einer registry ablegen
--) das neue Image im AKS deployed und untern einer öffentlichen IP zu Verfügung stellt
+-) eine Docker Image bauen  
+-) das Image in einer registry ablegen  
+-) das neue Image im AKS deployed und untern einer öffentlichen IP zu Verfügung stellt  
 
 ## Einstellung der Registry und des Clusters
 
@@ -26,10 +26,10 @@ So bald ein neuer CheckIn in GIT erfollgt soll die pipeline getriggerd werden un
 
 1. Erstellen einer neuen Pipeline in der DevOps Umgebung. 
 2. die Verbindung zum Git Repository setzten
-3. Im Configuration Tab `Deploy to Azure Kubernetes Service` auswählen. 
-   -) Subscription auswählen und den Cluster
-   -) Für den Namespace Exsisting auswählen und default
-   -) einen Namen für das container registry geben
+3. Im Configuration Tab `Deploy to Azure Kubernetes Service` auswählen.   
+   -) Subscription auswählen und den Cluster  
+   -) Für den Namespace Exsisting auswählen und default  
+   -) einen Namen für das container registry geben  
 4. Anschließend das `yaml-File` speicher und die Pipeline starten
 5. Nach dem erfolgreichen Deployment der Pipeline sind wir im besietztz eines Manifestes, welches über die Pipeline erstellt wird. Das Manifest beinhaltet alle relevante Informationen für das AKS cluster. Zusätzlich wird durch die Pipeline unser Docker Image in das registry geladen. 
 
