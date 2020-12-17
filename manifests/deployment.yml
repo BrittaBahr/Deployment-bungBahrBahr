@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: deploymentuebungbahrbahr 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploymentuebungbahrbahr
+  template:
+    metadata:
+      labels:
+        app: deploymentuebungbahrbahr 
+    spec:
+      containers:
+        - name: deploymentuebungbahrbahr 
+          image: deploymentregistrybahrbahr.azurecr.io/deploymentuebungbahrbahr
+          ports:
+          - containerPort: 8080
